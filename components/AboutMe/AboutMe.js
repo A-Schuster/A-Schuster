@@ -1,4 +1,3 @@
-import React from "react";
 import { Austin } from './user'
 import { AboutWrapper } from '../../styles/AboutMe.style'
 

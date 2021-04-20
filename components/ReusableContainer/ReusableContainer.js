@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Link  from "next/link"
 import { ReuseCont, Title, ComponentWrapper } from "../../styles/ReusableContainer.style";
 import { CloseButton } from "../CloseButton"
 
@@ -7,15 +8,28 @@ export const ReusableContainer = (props) => {
   let passedComponent = props.passedComponent;
 
   const showContent = () => {
-    setselected(true);
+    if(!selected){
+      setselected(true);
+    }
+  }
+
+  const closeContent = () => {
+    setselected(false)
   }
 
   return(
-    <ReuseCont>
-      {!selected &&
-      <Title onClick={showContent} visible={selected}>{passedComponent.name}</Title>
-      }
-     {selected && <><CloseButton/><ComponentWrapper>{passedComponent()}</ComponentWrapper></>}
-    </ReuseCont>
+    <>
+      {props.title &&<ReuseCont>
+        <Link href={`/${props.title.toString().toLowerCase()}`}>
+          <Title>{props.title}</Title>
+        </Link>
+        </ReuseCont>}
+      {props.passedComponent && <ReuseCont onClick={showContent}>
+        {!selected &&
+        <Title>{passedComponent.name}</Title>
+        }
+      {selected && props.passedComponent && <><CloseButton onClick={closeContent}/><ComponentWrapper>{passedComponent(props.post || null)}</ComponentWrapper></>}
+      </ReuseCont>}
+    </>
   )
 }
