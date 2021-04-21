@@ -2,14 +2,15 @@ import React from 'react';
 import Link from 'next/link'
 import { BlogComponent } from '../components/Blog/Blog';
 import { Posts } from '../components/Blog/blogs'
-import { ReusableContainer } from "../components/ReusableContainer/ReusableContainer"
+import { ReuseCont } from '../styles/Home.style';
+import { BlogWrapper } from '../styles/Blog.style';
 
 export const Blog = () => {
   return (
-    <div>
-      <Link href="/">HOME</Link>
-      {Posts.map(post => <ReusableContainer post={post} passedComponent={BlogComponent}/>)}
-    </div>
+    <BlogWrapper>
+      <Link href="/"><h1>HOME</h1></Link>
+      {Posts.map(post => <ReuseCont><BlogComponent post={post}/></ReuseCont>)}
+    </BlogWrapper>
   )
 }
 

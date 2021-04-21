@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const TopLeftBut = styled.button`
-  position:absolute;
   width: fit-content;
   font-size: 40px;
   border: none;

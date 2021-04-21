@@ -1,20 +1,15 @@
 import React from "react";
-import styled from 'styled-components'
+import { PostWrapper } from "../../styles/Blog.style"
 
-const BlogWrapper = styled.article`
-  display: flex; 
-  flex-direction: column;
-`
-
-export const BlogComponent = (post) => {
+export const BlogComponent = (props) => {
   return (
-    <BlogWrapper>
+    <PostWrapper>
       <h1>
-        {post.title}
+        {props.post.title}
       </h1>
-      <h2>
-        {post.date}
-      </h2>
-    </BlogWrapper>
+      <h5>
+        {props.post.date}
+      </h5>
+    </PostWrapper>
   )
 }

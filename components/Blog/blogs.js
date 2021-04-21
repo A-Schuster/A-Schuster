@@ -6,5 +6,5 @@ const post = {
   id: Math.floor(Math.random() * 9999)
 }
 
-export const Posts = [post] 
+export const Posts = [post,post,post,post,post,post,post,post,post,post] 
 

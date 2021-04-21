@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import { ReusableContainer } from '../components/ReusableContainer/ReusableContainer';
-import { HomeWrapper } from '../styles/Home.style';
+import Link from 'next/link'
+import { HomeWrapper, ReuseCont, Title } from '../styles/Home.style';
 import { AboutMe } from "../components/AboutMe/AboutMe"
-import { Contact } from '../components/Contact/contact';
-import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -14,9 +12,10 @@ export default function Home() {
       <meta property="Austin Schuster" content="Home Page" key="Home" />
     </Head>
       <HomeWrapper>
-        <ReusableContainer passedComponent={AboutMe}/>
-        <ReusableContainer passedComponent={Contact}/>
-        <ReusableContainer title={"Blog"}/>
+        <ReuseCont><AboutMe /></ReuseCont>
+        <ReuseCont><a href="https://github.com/A-Schuster" target="_blank"><Title>GitHub</Title></a></ReuseCont>
+        <ReuseCont><a href="mailto:aschuster.dev@gmail.com"><Title>Contact</Title></a></ReuseCont>
+        <Link href="/blog"><ReuseCont><Title>BLOG</Title></ReuseCont></Link>
       </HomeWrapper>
     </>
   );
