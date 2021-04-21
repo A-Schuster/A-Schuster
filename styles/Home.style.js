@@ -1,5 +1,4 @@
 import styled, {keyframes} from "styled-components";
-
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -42,16 +41,21 @@ export const ReuseCont = styled.section`
   grid-template-rows: 1fr;
   margin: 1em;
   align-items: center;
-  border: cadetblue solid;
+  border: teal solid;
   width: 40vw;
   min-height: 350px;
   min-width: 350px;
+  background-color: rgb(64, 61, 57);
   height: 40vh;
   justify-self: center;
 `
 export const Title = styled.h1`
   font-size: 3vw;
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
   cursor: pointer;
+  color: rgb(235, 94, 40);
   visibility: ${props => props.visible ? 'hidden' : 'visible'};
   animation: 1s ${props => props.visible ? fadeOut : fadeIn}
 `
