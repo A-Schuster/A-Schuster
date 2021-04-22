@@ -1,4 +1,5 @@
 import styled, {keyframes} from "styled-components";
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -51,11 +52,11 @@ export const ReuseCont = styled.section`
 `
 export const Title = styled.h1`
   font-size: 3vw;
-  @media (max-width: 768px) {
-    font-size: 2em;
-  }
   cursor: pointer;
   color: rgb(235, 94, 40);
   visibility: ${props => props.visible ? 'hidden' : 'visible'};
-  animation: 1s ${props => props.visible ? fadeOut : fadeIn}
+  animation: 1s ${props => props.visible ? fadeOut : fadeIn};
+  @media (max-width: 768px) {
+    font-size: 2em;
+  };
 `

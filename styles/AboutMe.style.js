@@ -26,7 +26,9 @@ export const AboutWrapper = styled.section`
   width: inherit;
   height: inherit;
   align-content: center;
+  color:rgb(235, 94, 40);
    p{
+    color: white;
     font-size: .83rem;
   }
 `
