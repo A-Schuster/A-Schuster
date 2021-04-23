@@ -35,6 +35,6 @@ export const BlogWrapper = styled.section`
 `
 export const PostInfo = styled.div`
   color: white;
-  visibility: ${props => props.visible ? 'hidden' : 'visible'};
-  animation: 1s ${props => props.visible ? fadeOut : fadeIn};
+  visibility: ${props => props.visible ? 'visible' : 'hidden'};
+  animation: 2s ${fadeIn};
 `
