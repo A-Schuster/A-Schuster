@@ -4,21 +4,39 @@ import { Title } from "../../styles/Home.style";
 
 export const BlogComponent = (props) => {
   const [selected,setSelected] = useState(false);
+  let timeout = false
 
-  const handleSelect = () => {
-    props.visibility ? setSelected(true) : setSelected(false)
+  const postPos = useRef()
+
+  const checkScrollPos = () => {
+    let postPosInfo = postPos.current.getBoundingClientRect();
+    console.log(postPosInfo)
+    if(window.self.scrollY < postPosInfo.top && (window.self.scrollY + (window.screen.height * .75) > postPosInfo.bottom)){
+      setSelected(true)
+    }
+    else(setSelected(false))
   }
 
-  const pageY = useRef()
-  useEffect(() => {
-    let pagePos = [pageY.current.getBoundingClientRect(),props.post.id]
-    props.getPostPos(pagePos)
+  useEffect(() => { 
+    window.addEventListener('scroll',handleScroll)
+    return () => {
+      window.removeEventListener('scroll',handleScroll)
+    }
   },[])
 
-  
+  const handleScroll = () => {
+    if(!timeout) {
+      console.log("nottimedout")
+      checkScrollPos()
+      timeout = true;
+    }
+    setTimeout(() => {
+      timeout = false
+    },150)
+  }
 
   return (
-    <PostWrapper onClick={handleSelect} ref={pageY}>
+    <PostWrapper ref={postPos}>
       {!selected && <>
         <Title>
           {props.post.title}
