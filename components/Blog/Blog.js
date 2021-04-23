@@ -53,7 +53,7 @@ export const BlogComponent = (props) => {
         </Title>
       </>}
       <>{selected &&
-        <PostInfo>
+        <PostInfo visible={selected}>
           <h2>{props.post.content}</h2>
           <h2>{props.post.pictures}</h2>
           <h2>{props.post.date}</h2>

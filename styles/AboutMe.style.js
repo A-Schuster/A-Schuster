@@ -34,5 +34,5 @@ export const AboutWrapper = styled.section`
 `
 export const AboutContent = styled.article`
   visibility: ${props => props.visible ? "visible" : "hidden" };
-  animation: 1s ${props => props.visible ? fadeIn : fadeOut};
+  animation: 1s ${fadeIn};
 `
