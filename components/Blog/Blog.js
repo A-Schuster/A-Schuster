@@ -1,20 +1,20 @@
 import React, {useEffect, useState, useRef} from "react";
-import { PostWrapper } from "../../styles/Blog.style"
+import { PostInfo, PostWrapper } from "../../styles/Blog.style"
 import { Title } from "../../styles/Home.style";
 
 export const BlogComponent = (props) => {
   const [selected,setSelected] = useState(false);
-  let timeout = false
-
-  const postPos = useRef()
+  let timeout = false;
+  const postPos = useRef();
 
   const checkScrollPos = () => {
     let postPosInfo = postPos.current.getBoundingClientRect();
-    console.log(postPosInfo)
-    if(window.self.scrollY < postPosInfo.top && (window.self.scrollY + (window.screen.height * .75) > postPosInfo.bottom)){
-      setSelected(true)
+    if(window.self.scrollY + (window.screen.height) > postPosInfo.bottom + window.self.scrollY && window.self.scrollY + (window.screen.height * .4) < postPosInfo.bottom + window.self.scrollY){
+      setSelected(true);
     }
-    else(setSelected(false))
+    else(
+      setSelected(false)
+      )
   }
 
   useEffect(() => { 
@@ -26,29 +26,30 @@ export const BlogComponent = (props) => {
 
   const handleScroll = () => {
     if(!timeout) {
-      console.log("nottimedout")
       checkScrollPos()
       timeout = true;
     }
     setTimeout(() => {
       timeout = false
-    },150)
+    },100)
   }
 
   return (
-    <PostWrapper ref={postPos}>
+    <PostWrapper onClick={checkScrollPos} ref={postPos}>
       {!selected && <>
         <Title>
           {props.post.title}
         </Title>
-        <h1>
+        <Title>
           {props.post.date}
-        </h1>
+        </Title>
       </>}
       <>{selected &&
-        <h5>
-          {props.post.content}
-        </h5>}
+        <PostInfo>
+          <h2>{props.post.content}</h2>
+          <h2>{props.post.picture}</h2>
+          <h2>{props.post.content}</h2>
+        </PostInfo>}
       </>
     </PostWrapper>
   )

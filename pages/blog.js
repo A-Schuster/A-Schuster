@@ -49,7 +49,6 @@ export const Blog = () => {
   )
 }
 
+// document.getElementById("taco").
 
 export default Blog
-
-// document.getElementById("taco").getBoundingClientRect()
