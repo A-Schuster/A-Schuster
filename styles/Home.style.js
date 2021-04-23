@@ -51,7 +51,8 @@ export const ReuseCont = styled.section`
   justify-self: center;
 `
 export const Title = styled.h1`
-  font-size: 3vw;
+  font-family: ${props => props.font || 'Rock Salt'}, cursive;
+  font-size: 2.5vw;
   cursor: pointer;
   color: rgb(235, 94, 40);
   visibility: ${props => props.visible ? 'hidden' : 'visible'};

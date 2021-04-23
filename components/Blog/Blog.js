@@ -17,8 +17,16 @@ export const BlogComponent = (props) => {
       )
   }
 
+  const forceShow = () => {
+    if(!selected){
+      setSelected(true);
+      window.removeEventListener('scroll',handleScroll);
+    }
+  }
+
   useEffect(() => { 
     window.addEventListener('scroll',handleScroll)
+    checkScrollPos()
     return () => {
       window.removeEventListener('scroll',handleScroll)
     }
@@ -35,20 +43,20 @@ export const BlogComponent = (props) => {
   }
 
   return (
-    <PostWrapper onClick={checkScrollPos} ref={postPos}>
+    <PostWrapper onClick={forceShow} ref={postPos}>
       {!selected && <>
         <Title>
           {props.post.title}
         </Title>
-        <Title>
+        <Title font={"Bangers"}>
           {props.post.date}
         </Title>
       </>}
       <>{selected &&
         <PostInfo>
           <h2>{props.post.content}</h2>
-          <h2>{props.post.picture}</h2>
-          <h2>{props.post.content}</h2>
+          <h2>{props.post.pictures}</h2>
+          <h2>{props.post.date}</h2>
         </PostInfo>}
       </>
     </PostWrapper>
